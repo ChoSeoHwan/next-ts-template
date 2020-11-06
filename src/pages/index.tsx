@@ -3,6 +3,7 @@ import React from 'react';
 import styles from '../../styles/Home.module.css';
 
 export default function Home() {
+    const a = 'test';
     return (
         <div className={styles.container}>
             <Head>

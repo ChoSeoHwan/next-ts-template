@@ -13,6 +13,11 @@
         "prettier",
         "prettier/react"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
