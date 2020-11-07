@@ -1,23 +1,17 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 
 const ButtonWrap = styled.button(`
     border:1px solid #dadce0;
 `);
 
-enum ButtonType {
-    PRIMARY
-}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-interface Button {
-    type?: ButtonType;
-}
-
-const Button: FC<Button> = ({
+const Button: FC<ButtonProps> = ({
     children,
-    type = ButtonType.PRIMARY
-}: PropsWithChildren<Button>) => {
-    return <ButtonWrap>{children}</ButtonWrap>;
+    ...buttonProps
+}: PropsWithChildren<ButtonProps>) => {
+    return <ButtonWrap {...buttonProps}>{children}</ButtonWrap>;
 };
 
 export default Button;

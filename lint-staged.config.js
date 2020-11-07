@@ -15,8 +15,8 @@ module.exports = {
             )
             .join(' ');
         return [
-            `prettier --with-node-modules --write ${escapedFileNames}`,
-            `eslint --fix --config .eslintrc ${filenames
+            `yarn format --with-node-modules ${escapedFileNames}`,
+            `yarn lint:fix ${filenames
                 .map((f) => `"${f.replace(/[[\]]/g, '[$&]')}"`)
                 .join(' ')}`,
             `git add ${escapedFileNames}`
@@ -34,7 +34,7 @@ module.exports = {
             )
             .join(' ');
         return [
-            `prettier --with-node-modules --write ${escapedFileNames}`,
+            `yarn format ${escapedFileNames}`,
             `git add ${escapedFileNames}`
         ];
     }
