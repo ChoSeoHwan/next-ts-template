@@ -99,9 +99,16 @@ export const GlobalStyle = (theme: Theme): ReturnType<typeof css> => css`
             url('/fonts/ProductSans-BlackItalic.woff') format('woff');
     }
 
+    @font-face {
+        font-family: 'NanumGothic';
+        src: url('/fonts/NanumGothic.eot');
+        src: url('/fonts/NanumGothic.eot') format('embedded-opentype'),
+            url('/fonts/NanumGothic.woff') format('woff');
+    }
+
     html {
         font-size: 10px;
-        font-family: 'Product Sans Regular', serif;
+        font-family: 'NanumGothic', 'Product Sans Regular', Roboto, Arial, serif;
     }
 
     body {
@@ -142,5 +149,10 @@ export const GlobalStyle = (theme: Theme): ReturnType<typeof css> => css`
         &:hover {
             text-decoration: underline;
         }
+    }
+
+    button {
+        cursor: pointer;
+        background: inherit;
     }
 `;
