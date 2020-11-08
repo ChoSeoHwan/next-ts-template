@@ -1,7 +1,8 @@
 import React from 'react';
-import PageLayout from 'components/layouts/PageLayout';
 
 import render from 'libs/testUtils';
+
+import PageLayout from 'components/layouts/PageLayout';
 
 describe('Components | Layouts | <PageLayout />', () => {
     const renderComponent = () =>

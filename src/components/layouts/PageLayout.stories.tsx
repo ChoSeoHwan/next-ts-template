@@ -1,8 +1,9 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import PageLayout from 'components/layouts/PageLayout';
 
 import styled from 'libs/styled';
+
+import PageLayout from 'components/layouts/PageLayout';
 
 export default {
     title: 'Layouts/PageLayout',

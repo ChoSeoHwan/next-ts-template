@@ -53,7 +53,7 @@
                     ["^svg"],
                     ["^styles"],
                     ["^pages"],
-                    ["^components/templates"],
+                    ["^components/layouts"],
                     ["^components/organisms"],
                     ["^components/molecules"],
                     ["^components/atoms"]
