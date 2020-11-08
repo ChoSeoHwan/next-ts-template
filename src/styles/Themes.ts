@@ -11,7 +11,9 @@ export const theme = {
         contentShadow: 'rgba(0, 0, 0, 0.2)'
     },
     size: {
-        headerHeight: '6rem'
+        headerHeight: '64px',
+
+        leftPanelWidth: '250px'
     },
     effect: {
         contentLoadingOpacity: 0.25,
