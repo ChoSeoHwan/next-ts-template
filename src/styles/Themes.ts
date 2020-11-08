@@ -2,17 +2,13 @@ import deepmerge from 'deepmerge';
 
 export const theme = {
     colors: {
-        bodyBackground: '#f0f2f5',
-        surfaceBackground: 'white',
-        loadingBackground: '#e4e6eb',
-        hoverBackground: 'rgba(0, 0, 0, 0.05)',
+        bodyBackground: '#fff',
+        hoverBackground: 'rgba(32,33,36,0.039)',
 
-        grayIcon: '#5e6871',
-        secondaryText: '#65676b',
+        primaryText: '#3c4043',
+        secondaryText: '#5f6368',
 
-        contentShadow: 'rgba(0, 0, 0, 0.2)',
-
-        primaryText: '#050505'
+        contentShadow: 'rgba(0, 0, 0, 0.2)'
     },
     size: {
         headerHeight: '6rem'

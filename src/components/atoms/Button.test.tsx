@@ -1,6 +1,6 @@
 import React from 'react';
 
-import render from 'libs/TestUtils';
+import render from 'libs/testUtils';
 
 import Button from 'components/atoms/Button';
 
