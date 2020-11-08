@@ -8,7 +8,6 @@ import Button, { ButtonProps, ButtonType } from 'components/atoms/Button';
 
 export default {
     title: 'Components/Atoms/Button',
-    desc: 'test',
     component: Button,
     argTypes: {
         type: {
