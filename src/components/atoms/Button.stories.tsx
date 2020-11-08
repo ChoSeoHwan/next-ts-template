@@ -11,13 +11,14 @@ export default {
     desc: 'test',
     component: Button,
     argTypes: {
-        text: { control: { type: 'text' } },
         type: {
+            description: 'button theme type',
             control: {
                 type: 'select',
-                options: Object.keys(ButtonType).filter((theme) =>
-                    isNaN(Number(theme))
-                )
+                options: {
+                    OUTLINE: ButtonType.OUTLINE,
+                    ICON: ButtonType.ICON
+                }
             }
         }
     },
@@ -30,28 +31,38 @@ export default {
     }
 };
 
-interface ButtonStoryProps {
+export const DefaultButton: Story<ButtonProps> = ({ type }: ButtonProps) => (
+    <Button type={type}>text</Button>
+);
+
+DefaultButton.args = {
+    type: ButtonType.OUTLINE
+};
+
+DefaultButton.storyName = 'Default';
+
+interface ExampleButtonProps {
     text: string;
-    type: string;
+    type: ButtonType;
 }
 
-export const DefaultButton: Story<ButtonStoryProps> = ({
+export const ExampleButton: Story<ExampleButtonProps> = ({
     text,
     type
-}: ButtonStoryProps) => {
+}: ExampleButtonProps) => {
     return (
-        <Button type={ButtonType[type]} onClick={action('click')}>
+        <Button type={type} onClick={action('click')}>
             {text}
         </Button>
     );
 };
 
-DefaultButton.args = {
+ExampleButton.args = {
     text: 'text',
-    type: ButtonType[0]
+    type: ButtonType.OUTLINE
 };
 
-DefaultButton.storyName = 'Default';
+ExampleButton.storyName = 'Example';
 
 const IconButtonStyled = styled(Button)<ButtonProps>`
     width: 32px;
