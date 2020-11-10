@@ -36,7 +36,7 @@
             {"allowSingleExtends": true}
         ],
         "simple-import-sort/sort": [
-            "error",
+            1,
             {
                 "groups": [
                     ["^react", "^next", "^@?\\w"],

@@ -7,6 +7,11 @@ const TestWrapper: FC = ({ children }: PropsWithChildren<null>) => {
     return <AppProvider>{children}</AppProvider>;
 };
 
+/**
+ * 각종 provider 적용
+ * @param ui
+ * @param options
+ */
 const render = (
     ui: React.ReactElement,
     { ...options } = {}

@@ -3,6 +3,8 @@ import { AppProps } from 'next/app';
 
 import AppProvider from 'libs/AppProvider';
 
+import { wrapper } from 'modules/store';
+
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     return (
         <AppProvider>
@@ -11,4 +13,4 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     );
 };
 
-export default App;
+export default wrapper.withRedux(App);
