@@ -3,12 +3,7 @@ module.exports = {
         return [
             {
                 source: '/',
-                destination: '/calendar',
-                permanent: true
-            },
-            {
-                source: '/calendar',
-                destination: '/calendar/month',
+                destination: '/test',
                 permanent: true
             }
         ];
