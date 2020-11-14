@@ -16,7 +16,9 @@ import { mapObject } from 'underscore';
 import { hydrateActions } from 'sagas/HydrateSaga';
 
 export abstract class ImmerReducer<T> extends BaseImmerReducer<T> {
-    abstract initialState: T;
+    public abstract initialState: T;
+
+    public abstract hydrate(payload: T): void;
 }
 
 interface ImmerReducerClass extends BaseImmerReducerClass {
@@ -35,9 +37,7 @@ export function combineModules<T extends Modules<ImmerReducerClass>>(
     modules: T
 ): Reducer<CombinedState<StateFromReducersMapObject<ModulesMapObject<T>>>> {
     const map = (module, moduleName) => {
-        if (typeof module.prototype['hydrate'] === 'function') {
-            hydrateActions[moduleName] = createActionCreators(module);
-        }
+        hydrateActions[moduleName] = createActionCreators(module);
 
         const moduleObject = new module();
         return createReducerFunction(module, moduleObject.initialState);
