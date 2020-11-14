@@ -3,8 +3,10 @@ import { render as reactRender } from '@testing-library/react';
 
 import AppProvider from 'libs/AppProvider';
 
+import { initStore } from 'modules/store';
+
 const TestWrapper: FC = ({ children }: PropsWithChildren<null>) => {
-    return <AppProvider>{children}</AppProvider>;
+    return <AppProvider store={initStore()}>{children}</AppProvider>;
 };
 
 /**

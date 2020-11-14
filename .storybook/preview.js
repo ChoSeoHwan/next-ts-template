@@ -1,6 +1,7 @@
 import React from 'react';
 
-import AppProvider from 'libs/AppProvider';
+import AppProvider from '../src/libs/AppProvider';
+import { initStore } from '../src/modules/store';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' }
@@ -8,7 +9,7 @@ export const parameters = {
 
 export const decorators = [
     (Story) => (
-        <AppProvider>
+        <AppProvider store={initStore()}>
             <Story />
         </AppProvider>
     )
