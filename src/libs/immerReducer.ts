@@ -6,7 +6,6 @@ import {
     ImmerReducerFunction
 } from 'immer-reducer';
 import {
-    ActionFromReducersMapObject,
     CombinedState,
     combineReducers,
     Reducer,
@@ -34,10 +33,7 @@ type ModulesMapObject<M extends Modules<ImmerReducerClass>> = {
 
 export function combineModules<T extends Modules<ImmerReducerClass>>(
     modules: T
-): Reducer<
-    CombinedState<StateFromReducersMapObject<ModulesMapObject<T>>>,
-    ActionFromReducersMapObject<ModulesMapObject<T>>
-> {
+): Reducer<CombinedState<StateFromReducersMapObject<ModulesMapObject<T>>>> {
     const map = (module, moduleName) => {
         if (typeof module.prototype['hydrate'] === 'function') {
             hydrateActions[moduleName] = createActionCreators(module);
