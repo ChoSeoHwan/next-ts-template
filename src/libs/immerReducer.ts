@@ -2,9 +2,16 @@ import {
     createActionCreators,
     createReducerFunction,
     ImmerReducer as BaseImmerReducer,
-    ImmerReducerClass as BaseImmerReducerClass
+    ImmerReducerClass as BaseImmerReducerClass,
+    ImmerReducerFunction
 } from 'immer-reducer';
-import { combineReducers } from 'redux';
+import {
+    ActionFromReducersMapObject,
+    CombinedState,
+    combineReducers,
+    Reducer,
+    StateFromReducersMapObject
+} from 'redux';
 import { mapObject } from 'underscore';
 
 import { hydrateActions } from 'sagas/HydrateSaga';
@@ -21,18 +28,25 @@ interface Modules<T extends ImmerReducerClass> {
     [key: string]: T;
 }
 
-export function combineModules<T extends ImmerReducerClass>(
-    modules: Modules<T>
-): ReturnType<typeof combineReducers> {
-    const reducerList = mapObject(modules, (module, moduleName) => {
+type ModulesMapObject<M extends Modules<ImmerReducerClass>> = {
+    [K in keyof M]: ImmerReducerFunction<M[K]>;
+};
+
+export function combineModules<T extends Modules<ImmerReducerClass>>(
+    modules: T
+): Reducer<
+    CombinedState<StateFromReducersMapObject<ModulesMapObject<T>>>,
+    ActionFromReducersMapObject<ModulesMapObject<T>>
+> {
+    const map = (module, moduleName) => {
         if (typeof module.prototype['hydrate'] === 'function') {
             hydrateActions[moduleName] = createActionCreators(module);
         }
 
         return createReducerFunction(module, module.prototype['initialState']);
-    });
+    };
 
-    return combineReducers(reducerList);
+    return combineReducers(mapObject<T, typeof map>(modules, map));
 }
 
 export * from 'immer-reducer';
