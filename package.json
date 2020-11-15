@@ -72,7 +72,8 @@
         "build-storybook": "build-storybook --no-dll",
         "lint-staged": "lint-staged --config lint-staged.config.js",
         "test": "jest --config=.jest/jest.config.js --coverage",
-        "test:watch": "yarn test --watchAll"
+        "test:watch": "yarn test --watchAll",
+        "git-hook-reset": "git config --unset core.hookpath"
     },
     "husky": {
         "hooks": {
