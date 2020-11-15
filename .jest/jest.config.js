@@ -19,6 +19,7 @@ module.exports = {
         '<rootDir>/src/components/**/*.{ts,tsx,js,jsx}',
         '!<rootDir>/src/**/*.stories.{ts,tsx,js,jsx}'
     ],
+    testMatch: ['**/(*.)+(test).[jt]s?(x)'],
     reporters: [
         'default',
         [

@@ -9,7 +9,7 @@ import { TestAction } from 'modules/TestModule';
 import { endServerSideSaga } from 'sagas';
 
 const CalendarTypeDates: NextPage = () => {
-    const data = useSelector<RootReducerState, number>(
+    const data = useSelector<RootReducerState, string>(
         ({ TestReducer }) => TestReducer.data
     );
 
@@ -18,7 +18,7 @@ const CalendarTypeDates: NextPage = () => {
 
 export const getServerSideProps = wrapper.getServerSideProps(
     async ({ store }) => {
-        store.dispatch(TestAction.delayIncrease(2));
+        store.dispatch(TestAction.fetchData('SeoHwan Cho'));
 
         await endServerSideSaga(store);
     }

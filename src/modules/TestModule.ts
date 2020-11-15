@@ -1,14 +1,16 @@
-import { createReducerFunction } from 'immer-reducer';
-
 import { createActionCreators, ImmerReducer } from 'libs/immerReducer';
 
+import ApiStatus from 'constants/ApiStatus';
+
 interface TestModuleState {
-    data: number;
+    status: ApiStatus;
+    data: string;
 }
 
 export class TestModule extends ImmerReducer<TestModuleState> {
     public initialState = {
-        data: 0
+        status: ApiStatus.CLEAR,
+        data: ''
     };
 
     public hydrate(payload: TestModuleState): void {
@@ -16,22 +18,19 @@ export class TestModule extends ImmerReducer<TestModuleState> {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public delayIncrease(number: number): void {
-        return;
+    public fetchData(name: string): void {
+        this.draftState.status = ApiStatus.LOADING;
     }
 
-    public increase(number: number): void {
-        this.draftState.data += number;
+    public fetchDataSuccess(data: string): void {
+        this.draftState.status = ApiStatus.SUCCESS;
+        this.draftState.data = data;
     }
 
-    public decrease(): void {
-        this.draftState.data--;
+    public fetchDataError(error: string): void {
+        this.draftState.status = ApiStatus.ERROR;
+        this.draftState.data = error;
     }
 }
 
-TestModule.prototype.initialState = {
-    data: 0
-};
-
-export const TestReducer = createReducerFunction(TestModule);
 export const TestAction = createActionCreators(TestModule);
